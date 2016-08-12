@@ -79,6 +79,141 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC5CE5211D5DDB1A008DCED8 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CE5221D5DDB1A008DCED8 /* Cteam(精华) */,
+				CC5CE5261D5DDB1A008DCED8 /* Follow(关注) */,
+				CC5CE52A1D5DDB1A008DCED8 /* Latest(最新) */,
+				CC5CE52E1D5DDB1A008DCED8 /* Mine(我) */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		CC5CE5221D5DDB1A008DCED8 /* Cteam(精华) */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CE5231D5DDB1A008DCED8 /* Controller */,
+				CC5CE5241D5DDB1A008DCED8 /* Model */,
+				CC5CE5251D5DDB1A008DCED8 /* View */,
+			);
+			path = "Cteam(精华)";
+			sourceTree = "<group>";
+		};
+		CC5CE5231D5DDB1A008DCED8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC5CE5241D5DDB1A008DCED8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC5CE5251D5DDB1A008DCED8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC5CE5261D5DDB1A008DCED8 /* Follow(关注) */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CE5271D5DDB1A008DCED8 /* Controller */,
+				CC5CE5281D5DDB1A008DCED8 /* Model */,
+				CC5CE5291D5DDB1A008DCED8 /* View */,
+			);
+			path = "Follow(关注)";
+			sourceTree = "<group>";
+		};
+		CC5CE5271D5DDB1A008DCED8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC5CE5281D5DDB1A008DCED8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC5CE5291D5DDB1A008DCED8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC5CE52A1D5DDB1A008DCED8 /* Latest(最新) */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CE52B1D5DDB1A008DCED8 /* Controller */,
+				CC5CE52C1D5DDB1A008DCED8 /* Model */,
+				CC5CE52D1D5DDB1A008DCED8 /* View */,
+			);
+			path = "Latest(最新)";
+			sourceTree = "<group>";
+		};
+		CC5CE52B1D5DDB1A008DCED8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC5CE52C1D5DDB1A008DCED8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC5CE52D1D5DDB1A008DCED8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CC5CE52E1D5DDB1A008DCED8 /* Mine(我) */ = {
+			isa = PBXGroup;
+			children = (
+				CC5CE52F1D5DDB1A008DCED8 /* Controller */,
+				CC5CE5301D5DDB1A008DCED8 /* Model */,
+				CC5CE5311D5DDB1A008DCED8 /* View */,
+			);
+			path = "Mine(我)";
+			sourceTree = "<group>";
+		};
+		CC5CE52F1D5DDB1A008DCED8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CC5CE5301D5DDB1A008DCED8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC5CE5311D5DDB1A008DCED8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CC9A52AF1D5D5F3D00C3C5D9 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +239,7 @@
 		CC9A52BA1D5D5F3D00C3C5D9 /* FunnySister */ = {
 			isa = PBXGroup;
 			children = (
+				CC5CE5211D5DDB1A008DCED8 /* Class */,
 				CC9A52BB1D5D5F3D00C3C5D9 /* AppDelegate.swift */,
 				CC9A52BD1D5D5F3D00C3C5D9 /* ViewController.swift */,
 				CC9A52BF1D5D5F3D00C3C5D9 /* Main.storyboard */,
@@ -475,10 +611,13 @@
 			baseConfigurationReference = FA028093E15DB46D98FB8817 /* Pods-FunnySister.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = FunnySister/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.FunnySister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -487,10 +626,13 @@
 			baseConfigurationReference = 62FF706E7E28847CC419D74C /* Pods-FunnySister.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = FunnySister/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.coppco.FunnySister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
