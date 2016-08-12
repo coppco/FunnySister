@@ -1,0 +1,15 @@
+#pod update --verbose --no-repo-update
+
+use_frameworks!
+
+target ‘FunnySister' do
+pod 'Alamofire', '~> 3.1.4'  #网络请求
+pod 'SwiftyJSON', '~> 2.3.2'  #JSON 处理
+pod 'SnapKit', '~> 0.19.1'  #AutoLayout
+pod 'ReactiveCocoa', '~> 4.0.0'  #函数响应式编程
+pod 'MJRefresh', '~> 3.1.10' #下拉上拉刷新
+pod 'Kingfisher', '~> 2.0.0'  #加载图片
+pod 'UITableView+FDTemplateLayoutCell', '~> 1.4'  #cell高度
+end
+
+

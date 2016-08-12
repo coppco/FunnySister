@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (3.1.5)
+  - Kingfisher (2.0.4)
+  - MJRefresh (3.1.12)
+  - ReactiveCocoa (4.0.1):
+    - ReactiveCocoa/UI (= 4.0.1)
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/Core (4.0.1):
+    - ReactiveCocoa/no-arc
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/no-arc (4.0.1):
+    - Result (~> 1.0.2)
+  - ReactiveCocoa/UI (4.0.1):
+    - ReactiveCocoa/Core
+    - Result (~> 1.0.2)
+  - Result (1.0.2)
+  - SnapKit (0.19.1)
+  - SwiftyJSON (2.3.2)
+  - UITableView+FDTemplateLayoutCell (1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.1.4)
+  - Kingfisher (~> 2.0.0)
+  - MJRefresh (~> 3.1.10)
+  - ReactiveCocoa (~> 4.0.0)
+  - SnapKit (~> 0.19.1)
+  - SwiftyJSON (~> 2.3.2)
+  - UITableView+FDTemplateLayoutCell (~> 1.4)
+
+SPEC CHECKSUMS:
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  Kingfisher: 8f1ec2c067ade2c549a1a594379b69c4b1ff81ab
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  ReactiveCocoa: f7011630aee4deeb16352fcb1b50d6bde9db4f90
+  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
+  SnapKit: eff58d6e3451bf2f482db2eccf86aecf371dc62d
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
+
+COCOAPODS: 0.39.0
