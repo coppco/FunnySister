@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class HJBaseViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -26,6 +26,7 @@ class HJBaseViewController: UIViewController {
     func gotoNextVC() {}
     
     func setupUI() {
+        
         self.view.addSubview(topView)
         topView.snp_makeConstraints { (make) -> Void in
             make.right.left.top.equalTo(self.view)

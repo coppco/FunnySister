@@ -24,7 +24,6 @@ class HJCreamTCell: UITableViewCell {
      var tModel: JokeModel?  {
         willSet {
             if let new = newValue {
-                print(new.u?.name, new.middleSize)
                 //设置子控件和约束
                 setSubviewAndAutoLayout(new)
             } else {

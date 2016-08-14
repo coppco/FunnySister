@@ -59,6 +59,7 @@
 		440E76291D5F48C80025EF41 /* HJPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E76261D5F48C80025EF41 /* HJPictureView.swift */; };
 		440E762A1D5F48C80025EF41 /* HJVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E76271D5F48C80025EF41 /* HJVideoView.swift */; };
 		440E762C1D5F49110025EF41 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E762B1D5F49110025EF41 /* JokeModel.swift */; };
+		44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */; };
 		CC9A52BC1D5D5F3D00C3C5D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52BB1D5D5F3D00C3C5D9 /* AppDelegate.swift */; };
 		CC9A52BE1D5D5F3D00C3C5D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52BD1D5D5F3D00C3C5D9 /* ViewController.swift */; };
 		CC9A52C11D5D5F3D00C3C5D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9A52BF1D5D5F3D00C3C5D9 /* Main.storyboard */; };
@@ -137,6 +138,7 @@
 		440E76261D5F48C80025EF41 /* HJPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJPictureView.swift; sourceTree = "<group>"; };
 		440E76271D5F48C80025EF41 /* HJVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJVideoView.swift; sourceTree = "<group>"; };
 		440E762B1D5F49110025EF41 /* JokeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
+		44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HJExtension.swift"; sourceTree = "<group>"; };
 		90D666E8B85072EF1F1DA407 /* Pods-FunnySister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.release.xcconfig"; sourceTree = "<group>"; };
 		B82D76B58ED53E40DF36EDF5 /* Pods_FunnySister.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunnySister.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC6BC5C9A22098D627E0A2B /* Pods-FunnySister.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.debug.xcconfig"; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 		440BEB6B1D5EADE9008017E0 /* HJExtension */ = {
 			isa = PBXGroup;
 			children = (
+				44D8BAA71D607B780085D009 /* UIImage */,
 				440BEBE41D5EE1FD008017E0 /* NSObject */,
 				440BEBD61D5EDF8E008017E0 /* NSString */,
 				440BEB741D5EAE98008017E0 /* UIColor */,
@@ -565,6 +568,14 @@
 				440BEBE51D5EE1FD008017E0 /* NSObject+HJExtension.swift */,
 			);
 			path = NSObject;
+			sourceTree = "<group>";
+		};
+		44D8BAA71D607B780085D009 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */,
+			);
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 		CC9A52AF1D5D5F3D00C3C5D9 = {
@@ -854,6 +865,7 @@
 				CC9A52BE1D5D5F3D00C3C5D9 /* ViewController.swift in Sources */,
 				440BEBDC1D5EDFDB008017E0 /* HJLastedController.swift in Sources */,
 				440BEB6D1D5EAE02008017E0 /* HJDefine.swift in Sources */,
+				44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */,
 				440BEB7D1D5EAE98008017E0 /* UITextField+HJExtension.swift in Sources */,
 				440BEBC51D5ED137008017E0 /* HJLoginRegistController.swift in Sources */,
 				440BEB871D5EB2A6008017E0 /* HJTabBar.swift in Sources */,

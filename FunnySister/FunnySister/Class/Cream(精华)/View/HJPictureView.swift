@@ -17,12 +17,32 @@ class HJPictureView: UIView {
                 switch value.jokeType {
                 case .Gif:
                     if let gif = value.gif {
-                        self.imageV.kf_setImageWithURL(NSURL(string: (gif.images?.first)!)!, placeholderImage: UIImage(named: "mainCellBackground"))
+//                        self.imageV.kf_setImageWithURL(NSURL(string: (gif.images?.first)!)!, placeholderImage: UIImage(named: "mainCellBackground"))
+                        self.imageV.kf_setImageWithURL(NSURL(string: (gif.images?.first)!)!, placeholderImage: UIImage(named: "mainCellBackground"), optionsInfo: nil, progressBlock: { (receivedSize, totalSize) -> () in
+                            
+                            }, completionHandler: { (image, error, cacheType, imageURL) -> () in
+                                if value.isLongPicture { //长图截取
+                                    guard let temp = image else{
+                                        return
+                                    }
+                                    self.imageV.image = temp.hj_getSmallPictureForLongPicture(value.middleSize)
+                                }
+                        })
                         self.gitImageV.hidden = false
                     }
                 case .Image:
                     if let temp = value.image {
-                        self.imageV.kf_setImageWithURL(NSURL(string: (temp.big?.first!)!)!, placeholderImage: UIImage(named: "mainCellBackground"))
+                        //self.imageV.kf_setImageWithURL(NSURL(string: (temp.big?.first!)!)!, placeholderImage: UIImage(named: "mainCellBackground"))
+                        self.imageV.kf_setImageWithURL(NSURL(string: (temp.big?.first)!)!, placeholderImage: UIImage(named: "mainCellBackground"), optionsInfo: nil, progressBlock: { (receivedSize, totalSize) -> () in
+                            
+                            }, completionHandler: { (image, error, cacheType, imageURL) -> () in
+                                if value.isLongPicture { //长图截取
+                                    guard let temp = image else{
+                                        return
+                                    }
+                                    self.imageV.image = temp.hj_getSmallPictureForLongPicture(value.middleSize)
+                                }
+                        })
                         self.gitImageV.hidden = true
                     }
                 default:
@@ -48,7 +68,7 @@ class HJPictureView: UIView {
     private lazy var imageV: UIImageView = {
         let image = UIImageView(image: UIImage(named: "post_placeholderImage"))
         image.contentMode = .ScaleAspectFill
-        image.layer.masksToBounds = true
+        image.clipsToBounds = true
         return image
     }()
     

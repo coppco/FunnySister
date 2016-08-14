@@ -100,14 +100,34 @@ class JokeModel: NSObject {
             tempWidth = maxWidth
             if tempHeight > 800 {
                 tempHeight = tempWidth  //超过800就等于宽度
-                isLongPicture = true
+//                isLongPicture = true
             }
         }
-//        return CGSize(width: tempWidth, height: tempHeight)
-        return CGSize(width: Int(tempWidth), height: Int(tempHeight))
+        return CGSize(width: tempWidth, height: tempHeight)
     }
     /**是否长图*/
-    var isLongPicture: Bool = false
+    var isLongPicture: Bool {
+        var tempWidth: CGFloat = 0
+        var tempHeight: CGFloat = 0
+        let maxWidth = kHJMainScreenWidth - 2 * 20
+        if let temp = gif {
+            tempWidth = CGFloat(Int(temp.width)!)
+            tempHeight = CGFloat(Int(temp.height)!)
+        } else if let temp = image {
+            tempWidth = CGFloat(Int(temp.width)!)
+            tempHeight = CGFloat(Int(temp.height)!)
+        }else if let temp = video {
+            tempWidth = CGFloat(Int(temp.width)!)
+            tempHeight = CGFloat(Int(temp.height)!)
+        } else {
+            tempWidth = maxWidth
+            tempHeight = maxWidth
+        }
+        if tempWidth != maxWidth {
+            tempHeight = maxWidth * tempHeight / tempWidth
+        }
+        return tempHeight >= 800
+    }
 }
 
 /**标签*/

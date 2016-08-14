@@ -8,6 +8,7 @@
 
 import Foundation
 
+private let kNSDateFormatSQLDateWithTime = "yyyy-MM-dd HH:mm:ss"
 extension NSDate {
     /**获取10位时间戳*/
     class func hj_getTenTimeSamp() -> String {
@@ -16,6 +17,13 @@ extension NSDate {
      /**获取13位时间戳*/
     class func hj_getThirteenTimeSamp() -> String {
         return String(format: "%.0f", NSDate().timeIntervalSince1970 * 1000)
+    }
+    
+    /**获取当前日期的字符串*/
+    class func hj_getCurrentDateString() ->String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = kNSDateFormatSQLDateWithTime
+        return dateFormatter.stringFromDate(NSDate())
     }
     
     /**年*/
@@ -51,7 +59,7 @@ extension NSDate {
     var hj_second: Int {
         return self.hj_components().second
     }
-    
+    /**毫秒*/
     var hj_nanosecond: Int {
         return self.hj_components().nanosecond
     }

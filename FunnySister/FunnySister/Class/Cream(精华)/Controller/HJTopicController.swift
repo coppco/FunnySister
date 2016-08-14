@@ -9,11 +9,13 @@
 import UIKit
 import MJRefresh
 import UITableView_FDTemplateLayoutCell
+import Kingfisher
 
 class HJTopicController: UITableViewController {
     var submenus: Submenus? {
         didSet {
             if 0 == self.modelArray.count {
+                ImageCache.defaultCache.clearMemoryCache() //清理内存
                 self.tableView.mj_header.beginRefreshing()
             }
         }
@@ -45,6 +47,7 @@ class HJTopicController: UITableViewController {
     
     //获取网络数据
     private func getMoreData() {
+        
         guard let item = self.submenus else {
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
@@ -53,7 +56,6 @@ class HJTopicController: UITableViewController {
         
         httpRequestJSON(.GET, URLString: jokeUrlForType(url: item.url, timeStamp: self.maxtime), success: {[unowned self] (object) -> Void in
             self.maxtime = object["info"]["np"].stringValue
-            print(self.maxtime)
             if let array = object["list"].array {
                 var temp = [JokeModel]()
                 for item in array {
@@ -128,8 +130,11 @@ class HJTopicController: UITableViewController {
         let height = tableView.fd_heightForCellWithIdentifier(identifier, cacheByIndexPath: indexPath, configuration: { (cell) -> Void in
             (cell as! HJCreamTCell).tModel = model
             })
-        print(model.u?.name, model.middleSize, height)
         return height
     }
 
+    override func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        ImageCache.defaultCache.clearMemoryCache() //清理内存
+    }
+    
 }
