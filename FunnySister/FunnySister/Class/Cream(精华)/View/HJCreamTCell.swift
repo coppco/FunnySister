@@ -12,93 +12,70 @@ import SnapKit
 
 class HJCreamTCell: UITableViewCell {
 
-
     override func prepareForReuse() {
         super.prepareForReuse()
-        for view in self.contentView.subviews {
-            view.snp_removeConstraints()
-            view.removeFromSuperview()
-        }
-        pictureV.snp_removeConstraints()
-        videoV.snp_removeConstraints()
-        
-        self.contentView.setNeedsUpdateConstraints()
-        self.contentView.updateConstraintsIfNeeded()
+        videoHeight?.updateOffset(0)
+        pictureHeight?.updateOffset(0)
+//        self.contentView.setNeedsUpdateConstraints()
+//        self.contentView.updateConstraintsIfNeeded()
     }
-
-    
     
     //MARK: 监听
      var tModel: JokeModel?  {
         willSet {
             if let new = newValue {
+                print(new.u?.name, new.middleSize)
                 //设置子控件和约束
-                print(new.u?.name)
                 setSubviewAndAutoLayout(new)
             } else {
-                HJLog("空值")
+                
             }
         }
     }
     
+    
+    
    //添加view,设置约束
     func setSubviewAndAutoLayout(new: JokeModel) {
-        setCommonSubview()
-        
         self.iconImageV.kf_setImageWithURL(NSURL(string: (new.u?.header![0])!)!, placeholderImage: UIImage(named: "defaultUserIcon"))
         self.nameL.text = new.u?.name
         self.create_timeL.text = new.passtime
         self.contentL.text = new.text
-
+        self.bottomBar.model = new
+        
         switch new.jokeType {
         case .Gif, .Image:
-            self.contentView.addSubview(pictureV)
+            videoV.hidden = true
+            pictureV.hidden = false
             pictureV.model = new
-            pictureV.snp_remakeConstraints(closure: { (make) -> Void in
-                make.top.equalTo(self.contentL.snp_bottom).offset(paddingV)
-                make.centerX.equalTo(self.contentView.snp_centerX)
-                make.size.equalTo(new.middleSize)
-            })
-            bottomBar.snp_makeConstraints(closure: { (make) -> Void in
-                make.left.right.bottom.equalTo(self.contentView)
-                make.height.equalTo(44)
-                make.top.equalTo(self.pictureV.snp_bottom).offset(paddingV)
-            })
+            pictureHeight?.updateOffset(new.middleSize.height)
+            videoHeight?.updateOffset(0)
             break
         case .Html:
-            bottomBar.snp_makeConstraints(closure: { (make) -> Void in
-                make.left.right.bottom.equalTo(self.contentView)
-                make.height.equalTo(44)
-                make.top.equalTo(self.contentL.snp_bottom).offset(paddingV)
-            })
+            videoV.hidden = true
+            pictureV.hidden = true
+            videoHeight?.updateOffset(0)
+            pictureHeight?.updateOffset(0)
             break
         case .Video:
-            self.contentView.addSubview(videoV)
+            videoV.hidden = false
+            pictureV.hidden = true
             videoV.model = new
-            videoV.snp_remakeConstraints(closure: { (make) -> Void in
-                make.top.equalTo(self.contentL.snp_bottom).offset(paddingV)
-                make.centerX.equalTo(self.contentView.snp_centerX)
-                make.size.equalTo(new.middleSize)
-            })
-            bottomBar.snp_makeConstraints(closure: { (make) -> Void in
-                make.left.right.bottom.equalTo(self.contentView)
-                make.height.equalTo(44)
-                make.top.equalTo(self.videoV.snp_bottom).offset(paddingV)
-            })
+            videoHeight?.updateOffset(new.middleSize.height)
+            pictureHeight?.updateOffset(0)
             break
         default:
-            bottomBar.snp_makeConstraints(closure: { (make) -> Void in
-                make.left.right.bottom.equalTo(self.contentView)
-                make.height.equalTo(44)
-                make.top.equalTo(self.contentL.snp_bottom).offset(paddingV)
-            })
+            videoV.hidden = true
+            pictureV.hidden = true
+            videoHeight?.updateOffset(0)
+            pictureHeight?.updateOffset(0)
+            break
         }
-        
-        self.bottomBar.model = new
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setCommonSubview()
     }
 
     //通用部分
@@ -108,6 +85,8 @@ class HJCreamTCell: UITableViewCell {
         self.contentView.addSubview(create_timeL)
         self.contentView.addSubview(moreButton)
         self.contentView.addSubview(contentL)
+        self.contentView.addSubview(pictureV)
+        self.contentView.addSubview(videoV)
         self.contentView.addSubview(bottomBar)
         
         iconImageV.snp_makeConstraints { (make) -> Void in
@@ -138,8 +117,33 @@ class HJCreamTCell: UITableViewCell {
             make.right.equalTo(-iconBeginX)
             make.top.equalTo(iconImageV.snp_bottom).offset(paddingV)
         }
+        
+        pictureV.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(self.contentL.snp_bottom).offset(paddingV)
+            make.centerX.equalTo(self.contentView.snp_centerX)
+            make.width.equalTo(kHJMainScreenWidth - 2 * iconBeginX)
+            pictureHeight = make.height.equalTo(0).constraint
+        })
+        
+        videoV.snp_makeConstraints(closure: { (make) -> Void in
+            make.top.equalTo(self.contentL.snp_bottom).offset(paddingV)
+            make.centerX.equalTo(self.contentView.snp_centerX)
+            make.width.equalTo(kHJMainScreenWidth - 2 * iconBeginX)
+            videoHeight = make.height.equalTo(0).constraint
+        })
+        
+        bottomBar.snp_makeConstraints(closure: { (make) -> Void in
+            make.left.right.bottom.equalTo(self.contentView).priorityLow()
+            make.height.equalTo(44)
+            make.top.greaterThanOrEqualTo(self.contentL.snp_bottom).offset(paddingV)
+            make.top.greaterThanOrEqualTo(self.pictureV.snp_bottom).offset(paddingV)
+            make.top.greaterThanOrEqualTo(self.videoV.snp_bottom).offset(paddingV)
+        })
+        
     }
     
+    private var pictureHeight: Constraint?
+    private var videoHeight: Constraint?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

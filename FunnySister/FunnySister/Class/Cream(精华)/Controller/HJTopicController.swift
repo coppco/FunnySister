@@ -38,8 +38,6 @@ class HJTopicController: UITableViewController {
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
             self.getDownData()
         })
-        
-        
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { () -> Void in
             self.getMoreData()
         })
@@ -126,10 +124,11 @@ class HJTopicController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let height = tableView.fd_heightForCellWithIdentifier(identifier, cacheByIndexPath: indexPath, configuration: {[unowned self] (cell) -> Void in
-            let model = self.modelArray[indexPath.row]
+        let model = self.modelArray[indexPath.row]
+        let height = tableView.fd_heightForCellWithIdentifier(identifier, cacheByIndexPath: indexPath, configuration: { (cell) -> Void in
             (cell as! HJCreamTCell).tModel = model
             })
+        print(model.u?.name, model.middleSize, height)
         return height
     }
 

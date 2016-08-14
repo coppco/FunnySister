@@ -98,6 +98,7 @@
         // of growing horizontally, in a flow-layout manner.
         if (contentViewWidth > 0) {
             NSLayoutConstraint *widthFenceConstraint = [NSLayoutConstraint constraintWithItem:templateLayoutCell.contentView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:contentViewWidth];
+            
             [templateLayoutCell.contentView addConstraint:widthFenceConstraint];
             // Auto layout engine does its math
             fittingSize = [templateLayoutCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];

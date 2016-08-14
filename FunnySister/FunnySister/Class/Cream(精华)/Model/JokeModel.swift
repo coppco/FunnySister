@@ -99,11 +99,12 @@ class JokeModel: NSObject {
             tempHeight = maxWidth * tempHeight / tempWidth
             tempWidth = maxWidth
             if tempHeight > 800 {
-//                tempHeight = tempWidth  //超过800就等于宽度
+                tempHeight = tempWidth  //超过800就等于宽度
                 isLongPicture = true
             }
         }
-        return CGSize(width: tempWidth, height: tempHeight)
+//        return CGSize(width: tempWidth, height: tempHeight)
+        return CGSize(width: Int(tempWidth), height: Int(tempHeight))
     }
     /**是否长图*/
     var isLongPicture: Bool = false
