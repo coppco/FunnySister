@@ -15,7 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        window?.backgroundColor = UIColor.whiteColor()
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey(is_First) {
+            window?.rootViewController = HJTabBarController()
+        } else {
+            window?.rootViewController = HJGuideController(enterAppClosure: {[weak window] () -> Void in
+                window?.rootViewController = HJTabBarController()
+                })
+        }
+        
         return true
     }
 
