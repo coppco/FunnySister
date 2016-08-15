@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.rootViewController = HJTabBarController()
                 })
         }
-        
+        window?.makeKeyAndVisible()
         return true
     }
 

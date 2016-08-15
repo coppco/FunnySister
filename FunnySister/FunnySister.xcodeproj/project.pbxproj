@@ -60,6 +60,8 @@
 		440E762A1D5F48C80025EF41 /* HJVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E76271D5F48C80025EF41 /* HJVideoView.swift */; };
 		440E762C1D5F49110025EF41 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E762B1D5F49110025EF41 /* JokeModel.swift */; };
 		44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */; };
+		CC5543CE1D61552D001BBB0B /* HJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5543CD1D61552D001BBB0B /* HJAlertView.swift */; };
+		CC5543D41D618E0C001BBB0B /* close-alertView.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5543D31D618E0C001BBB0B /* close-alertView.png */; };
 		CC9A52BC1D5D5F3D00C3C5D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52BB1D5D5F3D00C3C5D9 /* AppDelegate.swift */; };
 		CC9A52BE1D5D5F3D00C3C5D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52BD1D5D5F3D00C3C5D9 /* ViewController.swift */; };
 		CC9A52C11D5D5F3D00C3C5D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9A52BF1D5D5F3D00C3C5D9 /* Main.storyboard */; };
@@ -142,6 +144,8 @@
 		90D666E8B85072EF1F1DA407 /* Pods-FunnySister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.release.xcconfig"; sourceTree = "<group>"; };
 		B82D76B58ED53E40DF36EDF5 /* Pods_FunnySister.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunnySister.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC6BC5C9A22098D627E0A2B /* Pods-FunnySister.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.debug.xcconfig"; sourceTree = "<group>"; };
+		CC5543CD1D61552D001BBB0B /* HJAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJAlertView.swift; sourceTree = "<group>"; };
+		CC5543D31D618E0C001BBB0B /* close-alertView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-alertView.png"; sourceTree = "<group>"; };
 		CC9A52B81D5D5F3D00C3C5D9 /* FunnySister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnySister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9A52BB1D5D5F3D00C3C5D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC9A52BD1D5D5F3D00C3C5D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -486,6 +490,7 @@
 		440BEB851D5EB290008017E0 /* HJCommon */ = {
 			isa = PBXGroup;
 			children = (
+				CC5543CC1D615501001BBB0B /* AlertView */,
 				440BEBDD1D5EE121008017E0 /* HTTP */,
 				440BEBBB1D5ECF74008017E0 /* UIButton */,
 				440BEB881D5EB2D7008017E0 /* Guide */,
@@ -578,6 +583,15 @@
 			path = UIImage;
 			sourceTree = "<group>";
 		};
+		CC5543CC1D615501001BBB0B /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				CC5543D31D618E0C001BBB0B /* close-alertView.png */,
+				CC5543CD1D61552D001BBB0B /* HJAlertView.swift */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
 		CC9A52AF1D5D5F3D00C3C5D9 = {
 			isa = PBXGroup;
 			children = (
@@ -654,6 +668,7 @@
 				CC9A52B61D5D5F3D00C3C5D9 /* Resources */,
 				F5CA2C056B3227AC9C816725 /* [CP] Embed Pods Frameworks */,
 				D27F43A8F17D8A124C8CE777 /* [CP] Copy Pods Resources */,
+				B11E53E5DDAB4C60FCA8480D /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -761,6 +776,7 @@
 				CC9A52C61D5D5F3D00C3C5D9 /* LaunchScreen.storyboard in Resources */,
 				CC9A52C31D5D5F3D00C3C5D9 /* Assets.xcassets in Resources */,
 				440BEBB31D5EBAA1008017E0 /* 750*1334-3.jpg in Resources */,
+				CC5543D41D618E0C001BBB0B /* close-alertView.png in Resources */,
 				440BEBAE1D5EBAA1008017E0 /* 640*960-2.jpg in Resources */,
 				440BEBAF1D5EBAA1008017E0 /* 640*960-3.jpg in Resources */,
 				CC9A52C11D5D5F3D00C3C5D9 /* Main.storyboard in Resources */,
@@ -792,6 +808,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B11E53E5DDAB4C60FCA8480D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D27F43A8F17D8A124C8CE777 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -876,6 +907,7 @@
 				440E76221D5F486E0025EF41 /* HJTopicController.swift in Sources */,
 				440BEB731D5EAE76008017E0 /* UIBarButtonItem+HJExtension.swift in Sources */,
 				440BEBC21D5ED126008017E0 /* HJLoginBotomView.swift in Sources */,
+				CC5543CE1D61552D001BBB0B /* HJAlertView.swift in Sources */,
 				440BEBBD1D5ECF90008017E0 /* HJCustomButton.swift in Sources */,
 				440BEB7C1D5EAE98008017E0 /* UIColor+HJExtension.swift in Sources */,
 			);
