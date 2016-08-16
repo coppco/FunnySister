@@ -16,8 +16,38 @@ class HJCreamTCell: UITableViewCell {
         super.prepareForReuse()
         videoHeight?.updateOffset(0)
         pictureHeight?.updateOffset(0)
-//        self.contentView.setNeedsUpdateConstraints()
-//        self.contentView.updateConstraintsIfNeeded()
+    }
+    
+    func configCell(model: JokeModel) {
+        self.contentL.text = model.text
+
+        switch model.jokeType {
+        case .Gif, .Image:
+            videoV.hidden = true
+            pictureV.hidden = false
+            pictureHeight?.updateOffset(model.middleSize.height)
+            videoHeight?.updateOffset(0)
+            break
+        case .Html:
+            videoV.hidden = true
+            pictureV.hidden = true
+            videoHeight?.updateOffset(0)
+            pictureHeight?.updateOffset(0)
+            break
+        case .Video:
+            videoV.hidden = false
+            pictureV.hidden = true
+            videoHeight?.updateOffset(model.middleSize.height)
+            pictureHeight?.updateOffset(0)
+            break
+        default:
+            videoV.hidden = true
+            pictureV.hidden = true
+            videoHeight?.updateOffset(0)
+            pictureHeight?.updateOffset(0)
+            break
+        }
+
     }
     
     //MARK: 监听

@@ -128,7 +128,7 @@ class HJTopicController: UITableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let model = self.modelArray[indexPath.row]
         let height = tableView.fd_heightForCellWithIdentifier(identifier, cacheByIndexPath: indexPath, configuration: { (cell) -> Void in
-            (cell as! HJCreamTCell).tModel = model
+            (cell as! HJCreamTCell).configCell(model)
             })
         return height
     }

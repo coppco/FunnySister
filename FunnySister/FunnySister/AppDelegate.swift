@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
         }
         window?.makeKeyAndVisible()
+        NSNotificationCenter.defaultCenter().postNotificationName("abc", object: self, userInfo: ["1":"2"])
         return true
     }
 

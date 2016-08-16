@@ -16,13 +16,13 @@ class HJCreamController: HJBaseViewController {
     }
 
     override func gotoNextVC() {
-        let alert = HJAlertView(title: "提示", message: "你还没有登录difjdssdldsjfldsjfl jldsjfl的分解落实到飞机手榴弹记录的是减肥了就了\n第三方就死定了扣积分楼上的j", cancelButtonTitle: nil, otherButtonsTitle: ["234", "1321"])
-        alert.show()
+        UIScreen.mainScreen().brightness = 0.1
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+
     
 }

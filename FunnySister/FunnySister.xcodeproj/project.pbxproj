@@ -60,6 +60,10 @@
 		440E762A1D5F48C80025EF41 /* HJVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E76271D5F48C80025EF41 /* HJVideoView.swift */; };
 		440E762C1D5F49110025EF41 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E762B1D5F49110025EF41 /* JokeModel.swift */; };
 		44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */; };
+		CC2224BF1D63350D00B47249 /* HJRecommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224BE1D63350D00B47249 /* HJRecommend.swift */; };
+		CC2224C11D6335CD00B47249 /* HJSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224C01D6335CD00B47249 /* HJSquare.swift */; };
+		CC2224C91D633E8100B47249 /* HJSquareTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224C81D633E8100B47249 /* HJSquareTCell.swift */; };
+		CC2224CB1D633E9300B47249 /* HJRecommendTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224CA1D633E9300B47249 /* HJRecommendTCell.swift */; };
 		CC5543CE1D61552D001BBB0B /* HJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5543CD1D61552D001BBB0B /* HJAlertView.swift */; };
 		CC5543D41D618E0C001BBB0B /* close-alertView.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5543D31D618E0C001BBB0B /* close-alertView.png */; };
 		CC9A52BC1D5D5F3D00C3C5D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52BB1D5D5F3D00C3C5D9 /* AppDelegate.swift */; };
@@ -144,6 +148,10 @@
 		90D666E8B85072EF1F1DA407 /* Pods-FunnySister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.release.xcconfig"; sourceTree = "<group>"; };
 		B82D76B58ED53E40DF36EDF5 /* Pods_FunnySister.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunnySister.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDC6BC5C9A22098D627E0A2B /* Pods-FunnySister.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.debug.xcconfig"; sourceTree = "<group>"; };
+		CC2224BE1D63350D00B47249 /* HJRecommend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJRecommend.swift; sourceTree = "<group>"; };
+		CC2224C01D6335CD00B47249 /* HJSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJSquare.swift; sourceTree = "<group>"; };
+		CC2224C81D633E8100B47249 /* HJSquareTCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJSquareTCell.swift; sourceTree = "<group>"; };
+		CC2224CA1D633E9300B47249 /* HJRecommendTCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJRecommendTCell.swift; sourceTree = "<group>"; };
 		CC5543CD1D61552D001BBB0B /* HJAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJAlertView.swift; sourceTree = "<group>"; };
 		CC5543D31D618E0C001BBB0B /* close-alertView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-alertView.png"; sourceTree = "<group>"; };
 		CC9A52B81D5D5F3D00C3C5D9 /* FunnySister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnySister.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,8 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				440BEB631D5EAB25008017E0 /* Controller */,
-				440BEB641D5EAB25008017E0 /* Model */,
-				440BEB651D5EAB25008017E0 /* View */,
+				CC2224BD1D63350200B47249 /* Model */,
 			);
 			path = "Mine(我)";
 			sourceTree = "<group>";
@@ -364,20 +371,6 @@
 				440BEBCE1D5EDCB3008017E0 /* HJMineController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		440BEB641D5EAB25008017E0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		440BEB651D5EAB25008017E0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		440BEB691D5EADE9008017E0 /* Tools */ = {
@@ -581,6 +574,25 @@
 				44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		CC2224BD1D63350200B47249 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CC2224BE1D63350D00B47249 /* HJRecommend.swift */,
+				CC2224C01D6335CD00B47249 /* HJSquare.swift */,
+				CC2224C71D633E6100B47249 /* View */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CC2224C71D633E6100B47249 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC2224C81D633E8100B47249 /* HJSquareTCell.swift */,
+				CC2224CA1D633E9300B47249 /* HJRecommendTCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CC5543CC1D615501001BBB0B /* AlertView */ = {
@@ -886,6 +898,7 @@
 				440BEBC91D5ED8DC008017E0 /* HJTabBarController.swift in Sources */,
 				440BEBE61D5EE1FD008017E0 /* NSObject+HJExtension.swift in Sources */,
 				440BEBD31D5EDEDF008017E0 /* HJBaseViewController.swift in Sources */,
+				CC2224C91D633E8100B47249 /* HJSquareTCell.swift in Sources */,
 				440BEBCB1D5EDC98008017E0 /* HJFollowController.swift in Sources */,
 				440BEBE31D5EE1D1008017E0 /* HJListAppBar.swift in Sources */,
 				440E76241D5F48BE0025EF41 /* HJCreamTCell.swift in Sources */,
@@ -899,10 +912,13 @@
 				44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */,
 				440BEB7D1D5EAE98008017E0 /* UITextField+HJExtension.swift in Sources */,
 				440BEBC51D5ED137008017E0 /* HJLoginRegistController.swift in Sources */,
+				CC2224BF1D63350D00B47249 /* HJRecommend.swift in Sources */,
 				440BEB871D5EB2A6008017E0 /* HJTabBar.swift in Sources */,
 				440BEBDF1D5EE177008017E0 /* HJHttpRequest.swift in Sources */,
 				CC9A52BC1D5D5F3D00C3C5D9 /* AppDelegate.swift in Sources */,
+				CC2224CB1D633E9300B47249 /* HJRecommendTCell.swift in Sources */,
 				440BEBD51D5EDF35008017E0 /* HJHomeTopView.swift in Sources */,
+				CC2224C11D6335CD00B47249 /* HJSquare.swift in Sources */,
 				440BEBE11D5EE1B9008017E0 /* RequestDefine.swift in Sources */,
 				440E76221D5F486E0025EF41 /* HJTopicController.swift in Sources */,
 				440BEB731D5EAE76008017E0 /* UIBarButtonItem+HJExtension.swift in Sources */,
