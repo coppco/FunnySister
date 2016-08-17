@@ -361,6 +361,7 @@
 			children = (
 				440BEB631D5EAB25008017E0 /* Controller */,
 				CC2224BD1D63350200B47249 /* Model */,
+				CC2224C71D633E6100B47249 /* View */,
 			);
 			path = "Mine(我)";
 			sourceTree = "<group>";
@@ -581,7 +582,6 @@
 			children = (
 				CC2224BE1D63350D00B47249 /* HJRecommend.swift */,
 				CC2224C01D6335CD00B47249 /* HJSquare.swift */,
-				CC2224C71D633E6100B47249 /* View */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -592,7 +592,8 @@
 				CC2224C81D633E8100B47249 /* HJSquareTCell.swift */,
 				CC2224CA1D633E9300B47249 /* HJRecommendTCell.swift */,
 			);
-			path = View;
+			name = View;
+			path = Model/View;
 			sourceTree = "<group>";
 		};
 		CC5543CC1D615501001BBB0B /* AlertView */ = {

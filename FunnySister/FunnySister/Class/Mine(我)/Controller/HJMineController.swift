@@ -75,16 +75,22 @@ class HJMineController: UIViewController {
         didSet {
             print(recommendData.count)
             self.tableView.reloadData()
-            
+            self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 29, 0)
         }
     }
 
     private lazy var tableView: UITableView = {
-        let view = UITableView(frame: self.view.bounds, style: UITableViewStyle.Plain)
-        view.backgroundColor = UIColor.whiteColor()
+        let view = UITableView(frame: self.view.bounds, style: UITableViewStyle.Grouped)
+        view.backgroundColor = UIColor(red: 234 / 255.0, green: 234 / 255.0, blue: 234 / 255.0, alpha: 1)
         view.separatorStyle = .None
         view.delegate = self
         view.dataSource = self
+        
+        view.sectionHeaderHeight = 0
+        view.sectionFooterHeight = 10
+        
+        view.showsHorizontalScrollIndicator = false
+        view.showsVerticalScrollIndicator = false
         return view
     }()
 }
@@ -110,8 +116,9 @@ extension HJMineController: UITableViewDataSource {
             let model = self.recommendData[indexPath.item]
             var cell = tableView.dequeueReusableCellWithIdentifier(recommendCell) as? HJRecommendTCell
             if nil == cell {
-                cell = HJRecommendTCell()
+                cell = HJRecommendTCell(style: UITableViewCellStyle.Default, reuseIdentifier: recommendCell)
             }
+            cell?.model = model
             return cell!
         }
         return UITableViewCell()
@@ -137,9 +144,11 @@ extension HJMineController: UITableViewDelegate {
         if 0 == indexPath.section {
             return 40
         } else if 1 == indexPath.section {
-            return 100
+            let row = ceil(CGFloat(self.squareData.count) / 5)
+            let height = row * (HJSquareTCell.width + 20) + (row - 1) * 5
+            return height <= 0 ? 0 : height
         } else if 2 == indexPath.section {
-            return 40
+            return 80
         }
         return 0
     }

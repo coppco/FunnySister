@@ -10,8 +10,17 @@ import UIKit
 
 class HJRecommendTCell: UITableViewCell {
 
+    var model: HJRecommend = HJRecommend() {
+        didSet {
+            iconImageV.kf_setImageWithURL(NSURL(string: model.image_list)!, placeholderImage: UIImage(named: "post-tag-bg"))
+            titleL.text = model.theme_name
+            subTitleL.text = model.sub_number
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configUI()
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -22,16 +31,16 @@ class HJRecommendTCell: UITableViewCell {
         self.contentView.addSubview(titleL)
         self.contentView.addSubview(subTitleL)
         self.contentView.addSubview(subscribeB)
-        let padding: CGFloat = 5
+        let padding: CGFloat = 10
         
         iconImageV.snp_makeConstraints { (make) -> Void in
-            make.left.right.bottom.equalTo(UIEdgeInsetsMake(padding, padding, -padding, 0))
+            make.left.top.bottom.equalTo(UIEdgeInsetsMake(padding, padding, -padding, 0))
             make.width.equalTo(iconImageV.snp_height)
         }
         
         titleL.snp_makeConstraints { (make) -> Void in
             make.top.equalTo(iconImageV.snp_top)
-            make.left.equalTo(iconImageV.snp_right).offset(padding)
+            make.left.equalTo(iconImageV.snp_right).offset(padding * 2)
             make.bottom.equalTo(subTitleL.snp_top)
         }
         
@@ -63,7 +72,8 @@ class HJRecommendTCell: UITableViewCell {
     /**图片*/
     private lazy var iconImageV: UIImageView = {
         let view = UIImageView()
-        view.layer.cornerRadius = 3
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -79,7 +89,7 @@ class HJRecommendTCell: UITableViewCell {
     
     private lazy var subscribeB: UIButton = {
         let button = UIButton()
-        button.setTitle("订阅", forState: <#T##UIControlState#>)
+        button.setTitle("订阅", forState: UIControlState.Normal)
         return button
     }()
 }
