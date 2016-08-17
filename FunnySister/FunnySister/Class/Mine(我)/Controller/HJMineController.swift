@@ -17,6 +17,10 @@ class HJMineController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+        tableView.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.view)
+        }
+        tableView.contentInset = UIEdgeInsetsMake(-20, 0, -10, 0)        
         self.getRecommendData()
         self.getSquareData()
     }
@@ -77,7 +81,7 @@ class HJMineController: UIViewController {
         didSet {
             print(recommendData.count)
             self.tableView.reloadData()
-            self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 29, 0)
+//            self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 29, 0)
         }
     }
 
@@ -157,9 +161,13 @@ extension HJMineController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if 0 == indexPath.section {
-            self.presentViewController(HJLoginRegistController(), animated: true, completion: { 
-                
-            })
+            self.presentViewController(HJLoginRegistController(), animated: true, completion: nil)
+        } else if 1 == indexPath.section {
+        } else if 2 == indexPath.section {
+            let recommend = self.recommendData[indexPath.item]
+            let subscribeVC = HJSubscribeController(style: .Grouped, theme_id: recommend.theme_id)
+            subscribeVC.title = recommend.theme_name
+            self.navigationController?.pushViewController(subscribeVC, animated: true)
         }
     }
 }

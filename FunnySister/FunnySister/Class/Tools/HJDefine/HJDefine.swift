@@ -30,7 +30,7 @@ let is_iPhone4: Bool = CGSizeEqualToSize(kHJMainScreenSize, CGSizeMake(320, 480)
 /**是否是iPhone 4S*/
 let is_iPhone4s: Bool = CGSizeEqualToSize(kHJMainScreenSize, CGSizeMake(320, 480)) && kHJMainScreen.scale == 2.0
 
-/**是否是iPhone 5 or iPhone 5S*/
+/**是否是iPhone 5 、 iPhone 5S or iPhone SE*/
 let is_iPhone5: Bool = CGSizeEqualToSize(kHJMainScreenSize, CGSizeMake(320, 568))
 
 /**是否是iPhone 6 or iPhone 6S*/

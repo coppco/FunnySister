@@ -65,6 +65,7 @@ class HJSquareTCell: UITableViewCell {
         view.backgroundColor = UIColor.whiteColor()
         view.delegate = self
         view.dataSource = self
+        view.scrollEnabled = false
         return view
     }()
 

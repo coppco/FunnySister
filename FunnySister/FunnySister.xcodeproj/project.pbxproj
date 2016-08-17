@@ -64,6 +64,7 @@
 		CC2224C11D6335CD00B47249 /* HJSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224C01D6335CD00B47249 /* HJSquare.swift */; };
 		CC2224C91D633E8100B47249 /* HJSquareTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224C81D633E8100B47249 /* HJSquareTCell.swift */; };
 		CC2224CB1D633E9300B47249 /* HJRecommendTCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224CA1D633E9300B47249 /* HJRecommendTCell.swift */; };
+		CC4B13C41D647C2C00AB0011 /* HJSubscribeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4B13C31D647C2C00AB0011 /* HJSubscribeHeaderView.swift */; };
 		CC5543CE1D61552D001BBB0B /* HJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5543CD1D61552D001BBB0B /* HJAlertView.swift */; };
 		CC5543D41D618E0C001BBB0B /* close-alertView.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5543D31D618E0C001BBB0B /* close-alertView.png */; };
 		CC9A52BC1D5D5F3D00C3C5D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52BB1D5D5F3D00C3C5D9 /* AppDelegate.swift */; };
@@ -73,6 +74,9 @@
 		CC9A52C61D5D5F3D00C3C5D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC9A52C41D5D5F3D00C3C5D9 /* LaunchScreen.storyboard */; };
 		CC9A52D11D5D5F3D00C3C5D9 /* FunnySisterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52D01D5D5F3D00C3C5D9 /* FunnySisterTests.swift */; };
 		CC9A52DC1D5D5F3D00C3C5D9 /* FunnySisterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9A52DB1D5D5F3D00C3C5D9 /* FunnySisterUITests.swift */; };
+		CCEE8D4A1D6465BC0075FD2D /* HJSubscribeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE8D471D6465BC0075FD2D /* HJSubscribeController.swift */; };
+		CCEE8D4C1D6466000075FD2D /* HJTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE8D4B1D6466000075FD2D /* HJTheme.swift */; };
+		CCEE8D4E1D64660A0075FD2D /* HJUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE8D4D1D64660A0075FD2D /* HJUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +156,7 @@
 		CC2224C01D6335CD00B47249 /* HJSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJSquare.swift; sourceTree = "<group>"; };
 		CC2224C81D633E8100B47249 /* HJSquareTCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJSquareTCell.swift; sourceTree = "<group>"; };
 		CC2224CA1D633E9300B47249 /* HJRecommendTCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJRecommendTCell.swift; sourceTree = "<group>"; };
+		CC4B13C31D647C2C00AB0011 /* HJSubscribeHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJSubscribeHeaderView.swift; sourceTree = "<group>"; };
 		CC5543CD1D61552D001BBB0B /* HJAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJAlertView.swift; sourceTree = "<group>"; };
 		CC5543D31D618E0C001BBB0B /* close-alertView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-alertView.png"; sourceTree = "<group>"; };
 		CC9A52B81D5D5F3D00C3C5D9 /* FunnySister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunnySister.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +172,9 @@
 		CC9A52D71D5D5F3D00C3C5D9 /* FunnySisterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunnySisterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9A52DB1D5D5F3D00C3C5D9 /* FunnySisterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunnySisterUITests.swift; sourceTree = "<group>"; };
 		CC9A52DD1D5D5F3D00C3C5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCEE8D471D6465BC0075FD2D /* HJSubscribeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJSubscribeController.swift; sourceTree = "<group>"; };
+		CCEE8D4B1D6466000075FD2D /* HJTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJTheme.swift; sourceTree = "<group>"; };
+		CCEE8D4D1D64660A0075FD2D /* HJUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +367,7 @@
 		440BEB621D5EAB25008017E0 /* Mine(我) */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE8D451D6465BC0075FD2D /* Subscribe(订阅) */,
 				440BEB631D5EAB25008017E0 /* Controller */,
 				CC2224BD1D63350200B47249 /* Model */,
 				CC2224C71D633E6100B47249 /* View */,
@@ -660,6 +669,41 @@
 			path = FunnySisterUITests;
 			sourceTree = "<group>";
 		};
+		CCEE8D451D6465BC0075FD2D /* Subscribe(订阅) */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE8D461D6465BC0075FD2D /* Controller */,
+				CCEE8D481D6465BC0075FD2D /* Model */,
+				CCEE8D491D6465BC0075FD2D /* View */,
+			);
+			path = "Subscribe(订阅)";
+			sourceTree = "<group>";
+		};
+		CCEE8D461D6465BC0075FD2D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE8D471D6465BC0075FD2D /* HJSubscribeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CCEE8D481D6465BC0075FD2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE8D4B1D6466000075FD2D /* HJTheme.swift */,
+				CCEE8D4D1D64660A0075FD2D /* HJUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CCEE8D491D6465BC0075FD2D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC4B13C31D647C2C00AB0011 /* HJSubscribeHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E024F1BE0CA467E8AFB64AE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +942,7 @@
 				440E76281D5F48C80025EF41 /* HJJokeToolBar.swift in Sources */,
 				440E76291D5F48C80025EF41 /* HJPictureView.swift in Sources */,
 				440BEBC91D5ED8DC008017E0 /* HJTabBarController.swift in Sources */,
+				CCEE8D4A1D6465BC0075FD2D /* HJSubscribeController.swift in Sources */,
 				440BEBE61D5EE1FD008017E0 /* NSObject+HJExtension.swift in Sources */,
 				440BEBD31D5EDEDF008017E0 /* HJBaseViewController.swift in Sources */,
 				CC2224C91D633E8100B47249 /* HJSquareTCell.swift in Sources */,
@@ -922,11 +967,14 @@
 				440BEBD51D5EDF35008017E0 /* HJHomeTopView.swift in Sources */,
 				CC2224C11D6335CD00B47249 /* HJSquare.swift in Sources */,
 				440BEBE11D5EE1B9008017E0 /* RequestDefine.swift in Sources */,
+				CCEE8D4E1D64660A0075FD2D /* HJUser.swift in Sources */,
 				440E76221D5F486E0025EF41 /* HJTopicController.swift in Sources */,
 				440BEB731D5EAE76008017E0 /* UIBarButtonItem+HJExtension.swift in Sources */,
 				440BEBC21D5ED126008017E0 /* HJLoginBotomView.swift in Sources */,
+				CCEE8D4C1D6466000075FD2D /* HJTheme.swift in Sources */,
 				CC5543CE1D61552D001BBB0B /* HJAlertView.swift in Sources */,
 				440BEBBD1D5ECF90008017E0 /* HJCustomButton.swift in Sources */,
+				CC4B13C41D647C2C00AB0011 /* HJSubscribeHeaderView.swift in Sources */,
 				440BEB7C1D5EAE98008017E0 /* UIColor+HJExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
