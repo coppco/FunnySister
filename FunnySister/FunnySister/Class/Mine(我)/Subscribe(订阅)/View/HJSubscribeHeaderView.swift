@@ -31,13 +31,14 @@ class HJSubscribeHeaderView: UIView {
     
     
     private func setupUI() {
-        self.backgroundColor = UIColor.lightTextColor()
+        self.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.1)
         self.addSubview(imageV)
         imageV.addSubview(shareB)
         imageV.addSubview(postL)
         imageV.addSubview(peopleNumberL)
         self.addSubview(contentL)
         self.addSubview(userView)
+        userView.addSubview(moreB)
         
         self.imageV.kf_setImageWithURL(NSURL(string: self.theme.image_detail)!)
         self.postL.text = "帖子数:  " + theme.post_number
@@ -54,10 +55,15 @@ class HJSubscribeHeaderView: UIView {
         for (index, item) in userArray.enumerate() {
             if 5 >= index {
                 let button = HJCustomButton()
+                button.radio = 0.8
+                button.labelWidth = 0.8
+                button.kf_setImageWithURL(NSURL(string: item.header)!, forState: UIControlState.Normal)
                 button.setTitle(item.name, forState: UIControlState.Normal)
-                button.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+                button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                 userView.addSubview(button)
                 self.buttonArray.append(button)
+            } else {
+                break
             }
         }
     }
@@ -82,16 +88,43 @@ class HJSubscribeHeaderView: UIView {
         }
         
         self.contentL.snp_makeConstraints { (make) in
-            make.left.right.equalTo(self)
-            make.top.equalTo(imageV.snp_bottom)
+            make.left.right.equalTo(UIEdgeInsetsMake(0, 5, 0, -5))
+            make.top.equalTo(imageV.snp_bottom).offset(5)
         }
         
         self.userView.snp_makeConstraints { (make) in
             make.left.right.equalTo(self)
             make.top.greaterThanOrEqualTo(imageV.snp_bottom).offset(5)
             make.top.greaterThanOrEqualTo(contentL.snp_bottom).offset(5)
-            make.height.equalTo(60)
+            make.height.equalTo(kHJMainScreenWidth / 7 * 1.2)
             make.bottom.equalTo(self.snp_bottom).offset(-5)
+        }
+        var last: HJCustomButton?
+        for button in buttonArray {
+            if let temp = last {
+                button.snp_makeConstraints(closure: { (make) in
+                    make.top.bottom.equalTo(userView)
+                    make.width.equalTo(kHJMainScreenWidth / 7)
+                    make.left.equalTo(temp.snp_right)
+                })
+            } else {
+                //第一个
+                button.snp_makeConstraints(closure: { (make) in
+                    make.top.left.bottom.equalTo(userView)
+                    make.width.equalTo(kHJMainScreenWidth / 7)
+                })
+            }
+            last = button
+        }
+        
+        self.moreB.snp_makeConstraints { (make) in
+            make.top.bottom.equalTo(userView)
+            make.width.equalTo(kHJMainScreenWidth / 6)
+            if let temp = last {
+                make.left.equalTo(temp.snp_right)
+            } else {
+                make.left.equalTo(userView.snp_left)
+            }
         }
     }
     
@@ -129,6 +162,9 @@ class HJSubscribeHeaderView: UIView {
     /**正文, 可能为空*/
     private lazy var contentL: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFontOfSize(16)
+        label.textColor = UIColor.grayColor()
+        label.backgroundColor = UIColor.whiteColor()
         label.numberOfLines = 0
         return label
     }()
@@ -142,8 +178,11 @@ class HJSubscribeHeaderView: UIView {
     /**更多按钮*/
     private lazy var moreB: HJCustomButton = {
         let button = HJCustomButton()
+        button.backgroundColor = UIColor.whiteColor()
+        button.radio = 0.8
+        button.labelWidth = 0.6
         button.setTitle("更多", forState: UIControlState.Normal)
-        button.setTitleColor(UIColor.grayColor(), forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         button.setImage(UIImage(named: "mine-icon-more"), forState: UIControlState.Normal)
         return button
     }()

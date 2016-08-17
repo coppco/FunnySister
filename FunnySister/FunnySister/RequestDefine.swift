@@ -20,7 +20,7 @@ func jokeUrlForType(url url: String, timeStamp: String) -> String {
 }
 
 /**我的-推荐订阅*/
-let get_mine_recommend = "http://api.budejie.com/api/api_open.php?a=tag_recommend&c=topic&type=0"
+let get_mine_recommend = "http://api.budejie.com/api/api_open.php?a=tag_recommend&action=sub&appname=bs0315&asid=6989CB04-86B2-4D2E-9A3A-FA2E6B453AB4&c=topic&client=iphone&device=ios%20device&from=ios&jbk=0&limit=50&mac=&market=&openudid=d41d8cd98f00b204e9800998ecf8427e939e99ab&type=0&udid=&ver=4.3"
 
 /**订阅详情header*/
 func get_recommend_header(theme_id: String) -> String {
