@@ -84,10 +84,9 @@ class HJMineController: UIViewController {
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: self.view.bounds, style: UITableViewStyle.Grouped)
         view.backgroundColor = UIColor(red: 234 / 255.0, green: 234 / 255.0, blue: 234 / 255.0, alpha: 1)
-        view.separatorStyle = .None
+        view.separatorStyle = .SingleLine
         view.delegate = self
         view.dataSource = self
-        
         view.sectionHeaderHeight = 0
         view.sectionFooterHeight = 10
         
@@ -104,6 +103,7 @@ extension HJMineController: UITableViewDataSource {
             if cell == nil {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: loginRegistCell)
             }
+            cell?.selectionStyle = .None
             cell?.textLabel?.text = "登录/注册"
             cell?.imageView?.image = UIImage(named: "setup-head-default")
             return cell!
@@ -144,7 +144,7 @@ extension HJMineController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if 0 == indexPath.section {
-            return 40
+            return 50
         } else if 1 == indexPath.section {
             let row = ceil(CGFloat(self.squareData.count) / 5)
             let height = row * (HJSquareTCell.width + 20) + (row - 1) * HJSquareTCell.Vpadding + HJSquareTCell.topPadding + HJSquareTCell.bottomPadding
@@ -153,5 +153,13 @@ extension HJMineController: UITableViewDelegate {
             return 80
         }
         return 0
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if 0 == indexPath.section {
+            self.presentViewController(HJLoginRegistController(), animated: true, completion: { 
+                
+            })
+        }
     }
 }

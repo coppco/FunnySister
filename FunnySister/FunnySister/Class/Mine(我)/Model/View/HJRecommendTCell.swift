@@ -20,6 +20,7 @@ class HJRecommendTCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .None
         configUI()
     }
     required init?(coder aDecoder: NSCoder) {
@@ -53,7 +54,7 @@ class HJRecommendTCell: UITableViewCell {
         subscribeB.snp_makeConstraints { (make) -> Void in
             make.centerY.equalTo(iconImageV)
             make.right.equalTo(self.contentView.snp_right).offset(-padding * 2)
-            make.size.equalTo(CGSize(width: 60, height: 30))
+            make.size.equalTo(CGSize(width: 80, height: 30))
         }
     }
     

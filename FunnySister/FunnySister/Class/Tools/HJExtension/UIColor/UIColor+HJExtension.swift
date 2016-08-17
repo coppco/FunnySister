@@ -26,14 +26,15 @@ extension UIColor {
     }
     
     /**从字符串获取颜色*/
-    class func hj_colorFromHexString(var value: String) -> UIColor{
-        if value.characters.count <= 0 {
+    class func hj_colorFromHexString(value: String) -> UIColor{
+        var temp = value
+        if temp.characters.count <= 0 {
             return UIColor.clearColor()
         }
-        if value.hasPrefix("#") {
-            value = value.stringByReplacingOccurrencesOfString("#", withString: "")
+        if temp.hasPrefix("#") {
+            temp = temp.stringByReplacingOccurrencesOfString("#", withString: "")
         }
-        let scanner = NSScanner(string: value)
+        let scanner = NSScanner(string: temp)
         var result:UInt32 = UInt32()
         if !scanner.scanHexInt(&result) {
             return UIColor.clearColor()

@@ -32,6 +32,7 @@ class HJSquareTCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(collectionView)
+        self.selectionStyle = .None
         collectionView.snp_makeConstraints { (make) -> Void in
             make.edges.equalTo(self.contentView)
         }
