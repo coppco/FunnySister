@@ -32,7 +32,7 @@ class HJCustomButton: UIButton {
         let width = self.frame.size.width
         let height = self.frame.size.height
         let minValue = min(height * 0.8, width) * radio - padding
-        self.imageView?.frame = CGRectMake((width - minValue) / 2, (height - minValue) / 2, minValue, minValue)
+        self.imageView?.frame = CGRectMake((width - minValue) / 2, 0, minValue, minValue)
         self.titleLabel?.frame = CGRectMake(0, 0.8 * height + padding, width, height * 0.2 - padding)
     }
     deinit {

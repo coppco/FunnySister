@@ -53,7 +53,7 @@ class HJRecommendTCell: UITableViewCell {
         subscribeB.snp_makeConstraints { (make) -> Void in
             make.centerY.equalTo(iconImageV)
             make.right.equalTo(self.contentView.snp_right).offset(-padding * 2)
-            make.size.equalTo(CGSize(width: 40, height: 20))
+            make.size.equalTo(CGSize(width: 60, height: 30))
         }
     }
     
@@ -84,12 +84,21 @@ class HJRecommendTCell: UITableViewCell {
     
     private lazy var subTitleL: UILabel = {
         let label = UILabel()
+        label.textColor = UIColor.lightGrayColor()
+        label.font = UIFont.systemFontOfSize(15)
         return label
     }()
     
     private lazy var subscribeB: UIButton = {
         let button = UIButton()
         button.setTitle("订阅", forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: "plus"), forState: UIControlState.Normal)
+        button.setImage(UIImage(named: "plus"), forState: UIControlState.Highlighted)
+        button.titleLabel?.font = UIFont.systemFontOfSize(13)
+        button.layer.cornerRadius = 2
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.lightGrayColor().CGColor
         return button
     }()
 }

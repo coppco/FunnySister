@@ -17,7 +17,7 @@ class HJSquareTCell: UITableViewCell {
     static let topPadding: CGFloat = 10  //顶部间距
     static let bottomPadding: CGFloat = 10  //下部间距
     
-    static let Vpadding: CGFloat = 5 //垂直间距
+    static let Vpadding: CGFloat = 10 //垂直间距
     static let Hpadding: CGFloat = 10  //水平间距
     
     static let width = (kHJMainScreenWidth - 10 * Hpadding / 2) / 5  //宽度
@@ -54,7 +54,6 @@ class HJSquareTCell: UITableViewCell {
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
 
-        
         flowLayout.itemSize = CGSize(width: width, height: width + 20)
         flowLayout.minimumInteritemSpacing = Hpadding
         flowLayout.minimumLineSpacing = Vpadding
@@ -82,7 +81,7 @@ extension HJSquareTCell: UICollectionViewDataSource {
         if nil == cell.backgroundView {
             let button = HJCustomButton(type: UIButtonType.Custom)
             cell.backgroundView = button
-            button.radio = 0.8
+            button.radio = 0.9
             button.setTitle(model.name, forState: UIControlState.Normal)
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             button.kf_setImageWithURL(NSURL(string: model.icon)!, forState: UIControlState.Normal)

@@ -57,7 +57,9 @@ class HJMineController: UIViewController {
                 }
                 temp.append(recommend)
             }
-            self.recommendData = temp
+            self.recommendData = temp.sort({ (temp1, temp2) -> Bool in
+                return temp1.theme_id >= temp2.theme_id
+            })
             
             }) { (error) -> Void in
                 
@@ -145,7 +147,7 @@ extension HJMineController: UITableViewDelegate {
             return 40
         } else if 1 == indexPath.section {
             let row = ceil(CGFloat(self.squareData.count) / 5)
-            let height = row * (HJSquareTCell.width + 20) + (row - 1) * 5
+            let height = row * (HJSquareTCell.width + 20) + (row - 1) * HJSquareTCell.Vpadding + HJSquareTCell.topPadding + HJSquareTCell.bottomPadding
             return height <= 0 ? 0 : height
         } else if 2 == indexPath.section {
             return 80
