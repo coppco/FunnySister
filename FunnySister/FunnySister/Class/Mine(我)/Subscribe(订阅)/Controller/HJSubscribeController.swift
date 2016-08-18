@@ -54,7 +54,10 @@ class HJSubscribeController: UITableViewController {
 //        dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
         //汇总
         dispatch_group_notify(group, dispatch_get_main_queue()) {
-            let view = HJSubscribeHeaderView(theme: self.themeData, userArray: self.userArray)
+//            let view = HJSubscribeHeaderView(theme: self.themeData, userArray: self.userArray)
+            let view = HJSubscribeHeaderView(theme: self.themeData, userArray: self.userArray, changeClosure: { (type) in
+                self.newHot = type
+            })
             let widthFenceConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: kHJMainScreenWidth)
             view.addConstraint(widthFenceConstraint)
             let size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
@@ -67,23 +70,31 @@ class HJSubscribeController: UITableViewController {
     }
     
     //header
-    private func getHeaderData(group: dispatch_group_t) {
-        dispatch_group_enter(group)
+    private func getHeaderData(group: dispatch_group_t?) {
+        if let temp = group {
+            dispatch_group_enter(temp)
+        }
         httpRequestJSON(.GET, URLString: get_recommend_header(self.theme_id), success: { (object) in
             if let item = object["info"].dictionaryObject {
                     if let model = HJTheme.dictionaryToModel(item) as? HJTheme{
                         self.themeData = model
                 }
             }
-            dispatch_group_leave(group)
+            if let temp = group {
+                dispatch_group_leave(temp)
+            }
             }) { (error) in
-                dispatch_group_leave(group)
+                if let temp = group {
+                    dispatch_group_leave(temp)
+                }
         }
     }
     
     //user
-    private func getUserData(group: dispatch_group_t) {
-        dispatch_group_enter(group)
+    private func getUserData(group: dispatch_group_t?) {
+        if let temp = group {
+            dispatch_group_enter(temp)
+        }
         httpRequestJSON(.GET, URLString: get_recommend_user(self.theme_id), success: { (object) in
             if let array = object["top"].array {
                 var temp = [HJUser]()
@@ -94,16 +105,22 @@ class HJSubscribeController: UITableViewController {
                 }
                 self.userArray = temp
             }
-            dispatch_group_leave(group)
+            if let temp = group {
+                dispatch_group_leave(temp)
+            }
         }) { (error) in
-            dispatch_group_leave(group)
+            if let temp = group {
+                dispatch_group_leave(temp)
+            }
         }
     }
     
-    //帖子
-    private func getJokeData(group: dispatch_group_t) -> Void {
-        dispatch_group_enter(group)
-        httpRequestJSON(.GET, URLString: get_recommend_detail(self.theme_id), success: { (object) in
+    //帖子 new
+    private func getJokeData(group: dispatch_group_t?) -> Void {
+        if let temp = group {
+            dispatch_group_enter(temp)
+        }
+        httpRequestJSON(.GET, URLString: get_recommend_detail(self.theme_id, type: self.newHot.rawValue), success: { (object) in
             if let array = object["list"].array {
                 var temp = [JokeModel]()
                 for item in array {
@@ -111,11 +128,19 @@ class HJSubscribeController: UITableViewController {
                         temp.append(model)
                     }
                 }
-                self.jokeArray = temp
+                if self.newHot == .Hot {
+                    self.hotArray = temp
+                } else {
+                    self.newArray = temp
+                }
             }
-            dispatch_group_leave(group)
+            if let temp = group {
+                dispatch_group_leave(temp)
+            }
         }) { (error) in
-            dispatch_group_leave(group)
+            if let temp = group {
+                dispatch_group_leave(temp)
+            }
         }
     }
     
@@ -200,6 +225,38 @@ class HJSubscribeController: UITableViewController {
     private var themeData: HJTheme = HJTheme()
     private var userArray: [HJUser] = [HJUser]()
     private var jokeArray: [JokeModel] = [JokeModel]()
+    private var newArray: [JokeModel] = [JokeModel]() {
+        didSet {
+            self.jokeArray.removeAll()
+            self.jokeArray.appendContentsOf(newArray)
+        }
+    }
+    private var hotArray: [JokeModel] = [JokeModel]() {
+        didSet {
+            self.jokeArray.removeAll()
+            self.jokeArray.appendContentsOf(hotArray)
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+        }
+    }
+    private var newHot: SubscribeType = .New {
+        didSet {
+            //有数据不加载
+            if newHot == .Hot && hotArray.count == 0 {
+                self.getJokeData(nil)
+            } else {
+                self.jokeArray.removeAll()
+                self.jokeArray.appendContentsOf(hotArray)
+            }
+            if newHot == .New && newArray.count == 0 {
+                self.getJokeData(nil)
+            } else {
+                self.jokeArray.removeAll()
+                self.jokeArray.appendContentsOf(newArray)
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+            }
+        }
+    }
+    
     deinit {
         HJLog(self.classForCoder, "释放了")
     }

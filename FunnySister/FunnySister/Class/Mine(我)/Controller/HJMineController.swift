@@ -20,9 +20,15 @@ class HJMineController: UIViewController {
         tableView.snp_makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
-        tableView.contentInset = UIEdgeInsetsMake(-20, 0, -10, 0)        
-        self.getRecommendData()
-        self.getSquareData()
+        tableView.contentInset = UIEdgeInsetsMake(-20, 0, -10, 0)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.squareData.count == 0 || self.recommendData.count == 0 {
+            self.getRecommendData()
+            self.getSquareData()
+        }
     }
     
     /**获取广场数据*/

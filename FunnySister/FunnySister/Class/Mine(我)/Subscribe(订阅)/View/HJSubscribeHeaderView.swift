@@ -8,18 +8,25 @@
 
 import UIKit
 
+enum SubscribeType: String {
+    case Hot = "hot"
+    case New = "new"
+}
+
 class HJSubscribeHeaderView: UIView {
 
-    init (theme: HJTheme, userArray: [HJUser]) {
+    init (theme: HJTheme, userArray: [HJUser], changeClosure: (SubscribeType) -> Void) {
         self.theme = theme
         self.userArray = userArray
+        self.changeTitleClosure = changeClosure
         super.init(frame: CGRectZero)
         setupUI()
     }
     
-    init(frame: CGRect, theme: HJTheme, userArray: [HJUser]) {
+    init(frame: CGRect, theme: HJTheme, userArray: [HJUser], changeClosure: (SubscribeType) -> Void) {
         self.theme = theme
         self.userArray = userArray
+        self.changeTitleClosure = changeClosure
         super.init(frame: frame)
         setupUI()
     }
@@ -39,6 +46,11 @@ class HJSubscribeHeaderView: UIView {
         self.addSubview(contentL)
         self.addSubview(userView)
         userView.addSubview(moreB)
+        
+        self.addSubview(hotB)
+        self.addSubview(newB)
+        self.addSubview(redLine)
+        self.addSubview(middleL)
         
         self.imageV.kf_setImageWithURL(NSURL(string: self.theme.image_detail)!)
         self.postL.text = "帖子数:  " + theme.post_number
@@ -88,7 +100,7 @@ class HJSubscribeHeaderView: UIView {
         }
         
         self.contentL.snp_makeConstraints { (make) in
-            make.left.right.equalTo(UIEdgeInsetsMake(0, 5, 0, -5))
+            make.left.right.equalTo(UIEdgeInsetsMake(0, 0, 0, 0))
             make.top.equalTo(imageV.snp_bottom).offset(5)
         }
         
@@ -96,21 +108,22 @@ class HJSubscribeHeaderView: UIView {
             make.left.right.equalTo(self)
             make.top.greaterThanOrEqualTo(imageV.snp_bottom).offset(5)
             make.top.greaterThanOrEqualTo(contentL.snp_bottom).offset(5)
-            make.height.equalTo(kHJMainScreenWidth / 7 * 1.2)
-            make.bottom.equalTo(self.snp_bottom).offset(-5)
+            make.height.equalTo(kHJMainScreenWidth / 7 * 1.25)
         }
         var last: HJCustomButton?
         for button in buttonArray {
             if let temp = last {
                 button.snp_makeConstraints(closure: { (make) in
-                    make.top.bottom.equalTo(userView)
+                    make.top.equalTo(userView).offset(5)
+                    make.bottom.equalTo(userView).offset(-5)
                     make.width.equalTo(kHJMainScreenWidth / 7)
                     make.left.equalTo(temp.snp_right)
                 })
             } else {
                 //第一个
                 button.snp_makeConstraints(closure: { (make) in
-                    make.top.left.bottom.equalTo(userView)
+                    make.top.equalTo(userView).offset(5)
+                    make.bottom.equalTo(userView).offset(-5)
                     make.width.equalTo(kHJMainScreenWidth / 7)
                 })
             }
@@ -118,13 +131,40 @@ class HJSubscribeHeaderView: UIView {
         }
         
         self.moreB.snp_makeConstraints { (make) in
-            make.top.bottom.equalTo(userView)
-            make.width.equalTo(kHJMainScreenWidth / 6)
+            make.top.equalTo(userView).offset(5)
+            make.bottom.equalTo(userView).offset(-5)
+            make.width.equalTo(kHJMainScreenWidth / 7)
             if let temp = last {
                 make.left.equalTo(temp.snp_right)
             } else {
                 make.left.equalTo(userView.snp_left)
             }
+        }
+        
+        self.hotB.snp_makeConstraints { (make) in
+            make.top.equalTo(userView.snp_bottom).offset(5)
+            make.left.equalTo(0)
+            make.bottom.equalTo(self.snp_bottom).offset(-10)
+            make.height.equalTo(40)
+            make.width.equalTo(newB)
+        }
+        middleL.snp_makeConstraints { (make) in
+            make.top.equalTo(hotB.snp_top).offset(5)
+            make.bottom.equalTo(hotB.snp_bottom).offset(-5)
+            make.left.equalTo(hotB.snp_right)
+            make.right.equalTo(newB.snp_left)
+            make.width.equalTo(1)
+        }
+        newB.snp_makeConstraints { (make) in
+            make.top.equalTo(hotB)
+            make.right.equalTo(self)
+            make.height.equalTo(hotB)
+        }
+        
+        redLine.snp_makeConstraints { (make) in
+            make.bottom.left.right.equalTo(newB)
+            make.width.equalTo(hotB)
+            make.height.equalTo(2)
         }
     }
     
@@ -133,6 +173,7 @@ class HJSubscribeHeaderView: UIView {
     private var theme: HJTheme
     private var userArray: [HJUser]
     private var buttonArray: [HJCustomButton] = [HJCustomButton]()
+    private var changeTitleClosure: (SubscribeType) -> Void
     /**图片*/
     private lazy var imageV: UIImageView = {
         let view = UIImageView()
@@ -172,19 +213,69 @@ class HJSubscribeHeaderView: UIView {
     /**用户view*/
     private lazy var userView: UIView = {
         let view = UIView()
+        view.backgroundColor = UIColor.whiteColor()
         return view
     }()
     
     /**更多按钮*/
     private lazy var moreB: HJCustomButton = {
         let button = HJCustomButton()
-        button.backgroundColor = UIColor.whiteColor()
         button.radio = 0.8
         button.labelWidth = 0.6
         button.setTitle("更多", forState: UIControlState.Normal)
         button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         button.setImage(UIImage(named: "mine-icon-more"), forState: UIControlState.Normal)
         return button
+    }()
+    /**最新*/
+    private lazy var newB: UIButton = {
+        let button = UIButton(type: UIButtonType.Custom)
+        button.backgroundColor = UIColor.whiteColor()
+        button.setTitle("最新", forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.grayColor(), forState: .Normal)
+//        button.addTarget(self, action: #selector(HJSubscribeHeaderView.selectButton(_:)), forControlEvents: UIControlEvents.TouchUpInside) // 2.2版本写法,但是我自己电脑是xcode7.2,  所以还是使用2.1.1写法
+        button.addTarget(self, action: Selector("selectButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        return button
+    }()
+    
+    @objc private func selectButton(sender: UIButton) {
+        redLine.snp_remakeConstraints { (make) in
+            make.bottom.left.right.equalTo(sender)
+            make.width.equalTo(sender)
+            make.height.equalTo(2)
+        }
+        
+        UIView.animateWithDuration(0.25) { 
+            self.layoutIfNeeded()
+        }
+        if sender == self.hotB {
+            self.changeTitleClosure(.Hot)
+        } else {
+            self.changeTitleClosure(.New)
+        }
+    }
+    
+    /**最热*/
+    private lazy var hotB: UIButton = {
+        let button = UIButton(type: UIButtonType.Custom)
+        button.backgroundColor = UIColor.whiteColor()
+        button.setTitle("最热", forState: UIControlState.Normal)
+        button.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        button.addTarget(self, action: Selector("selectButton:"), forControlEvents: UIControlEvents.TouchUpInside)
+        return button
+    }()
+    
+    /**红色线*/
+    private lazy var redLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.redColor()
+        return view
+    }()
+    
+    private lazy var middleL: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.blackColor()
+        return view
     }()
     
     deinit {

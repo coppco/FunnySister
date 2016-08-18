@@ -32,7 +32,8 @@ func get_recommend_user(theme_id: String) -> String {
     return String(format: "http://api.budejie.com/api/api_open.php?a=theme_users&c=topic&theme_id=%@", theme_id)
 }
 
-/**订阅详情,帖子*/
-func get_recommend_detail(theme_id: String) -> String {
-    return String(format: "http://s.budejie.com/topic/tag-topic/%@/new/bs0315-iphone-4.3/0-20.json", theme_id)
+/**订阅详情,帖子new*/
+func get_recommend_detail(theme_id: String, type: String) -> String {
+    return String(format: "http://s.budejie.com/topic/tag-topic/%@/%@/bs0315-iphone-4.3/0-20.json", theme_id, type)
 }
+
