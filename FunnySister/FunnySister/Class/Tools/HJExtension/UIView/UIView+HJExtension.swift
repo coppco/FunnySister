@@ -24,7 +24,7 @@ extension UIView {
     /**y*/
     var hj_y: CGFloat {
         get {
-            return frame.origin.x
+            return frame.origin.y
         }
         set (new) {
             frame.origin.y = new
