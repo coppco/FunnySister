@@ -37,7 +37,7 @@ class HJTopicController: UITableViewController {
 
     private func configUI() {
         self.tableView.registerClass(HJCreamTCell.self, forCellReuseIdentifier: identifier)
-        self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { () -> Void in
+        self.tableView.mj_header = HJGifRefreshHeader(refreshingBlock: { () -> Void in
             self.getDownData()
         })
         self.tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: { () -> Void in

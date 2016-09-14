@@ -59,6 +59,10 @@ class HJBaseViewController: UIViewController {
         }
         
         guard let topicView = preView else {
+            scrollView.snp_makeConstraints { (make) -> Void in
+                make.left.right.bottom.equalTo(self.view)
+                make.top.equalTo(self.topView.snp_bottom)
+            }
             return
         }
         //最后设置scrollView

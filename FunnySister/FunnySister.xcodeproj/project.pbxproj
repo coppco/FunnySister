@@ -59,6 +59,8 @@
 		440E76291D5F48C80025EF41 /* HJPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E76261D5F48C80025EF41 /* HJPictureView.swift */; };
 		440E762A1D5F48C80025EF41 /* HJVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E76271D5F48C80025EF41 /* HJVideoView.swift */; };
 		440E762C1D5F49110025EF41 /* JokeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440E762B1D5F49110025EF41 /* JokeModel.swift */; };
+		445FB1F61D68002500639136 /* HJGifRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FB1F51D68002500639136 /* HJGifRefreshHeader.swift */; };
+		445FB1F91D68936B00639136 /* HJProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445FB1F81D68936B00639136 /* HJProgressView.swift */; };
 		44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */; };
 		CC2224BF1D63350D00B47249 /* HJRecommend.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224BE1D63350D00B47249 /* HJRecommend.swift */; };
 		CC2224C11D6335CD00B47249 /* HJSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2224C01D6335CD00B47249 /* HJSquare.swift */; };
@@ -150,6 +152,8 @@
 		440E76261D5F48C80025EF41 /* HJPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJPictureView.swift; sourceTree = "<group>"; };
 		440E76271D5F48C80025EF41 /* HJVideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJVideoView.swift; sourceTree = "<group>"; };
 		440E762B1D5F49110025EF41 /* JokeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeModel.swift; sourceTree = "<group>"; };
+		445FB1F51D68002500639136 /* HJGifRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJGifRefreshHeader.swift; sourceTree = "<group>"; };
+		445FB1F81D68936B00639136 /* HJProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HJProgressView.swift; sourceTree = "<group>"; };
 		44D8BAA81D607C6C0085D009 /* UIImage+HJExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HJExtension.swift"; sourceTree = "<group>"; };
 		90D666E8B85072EF1F1DA407 /* Pods-FunnySister.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunnySister.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunnySister/Pods-FunnySister.release.xcconfig"; sourceTree = "<group>"; };
 		B82D76B58ED53E40DF36EDF5 /* Pods_FunnySister.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunnySister.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -499,6 +503,8 @@
 		440BEB851D5EB290008017E0 /* HJCommon */ = {
 			isa = PBXGroup;
 			children = (
+				445FB1F71D68934500639136 /* HJProgressView */,
+				445FB1F41D68002500639136 /* HJGifRefreshHeader */,
 				CC5543CC1D615501001BBB0B /* AlertView */,
 				440BEBDD1D5EE121008017E0 /* HTTP */,
 				440BEBBB1D5ECF74008017E0 /* UIButton */,
@@ -583,6 +589,22 @@
 				440BEBE51D5EE1FD008017E0 /* NSObject+HJExtension.swift */,
 			);
 			path = NSObject;
+			sourceTree = "<group>";
+		};
+		445FB1F41D68002500639136 /* HJGifRefreshHeader */ = {
+			isa = PBXGroup;
+			children = (
+				445FB1F51D68002500639136 /* HJGifRefreshHeader.swift */,
+			);
+			path = HJGifRefreshHeader;
+			sourceTree = "<group>";
+		};
+		445FB1F71D68934500639136 /* HJProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				445FB1F81D68936B00639136 /* HJProgressView.swift */,
+			);
+			path = HJProgressView;
 			sourceTree = "<group>";
 		};
 		44D8BAA71D607B780085D009 /* UIImage */ = {
@@ -966,6 +988,7 @@
 				CC572BDA1D65D3EF00217A3E /* NSString+MD5.swift in Sources */,
 				440BEBDC1D5EDFDB008017E0 /* HJLastedController.swift in Sources */,
 				440BEB6D1D5EAE02008017E0 /* HJDefine.swift in Sources */,
+				445FB1F91D68936B00639136 /* HJProgressView.swift in Sources */,
 				44D8BAA91D607C6C0085D009 /* UIImage+HJExtension.swift in Sources */,
 				440BEB7D1D5EAE98008017E0 /* UITextField+HJExtension.swift in Sources */,
 				440BEBC51D5ED137008017E0 /* HJLoginRegistController.swift in Sources */,
@@ -978,6 +1001,7 @@
 				CC2224C11D6335CD00B47249 /* HJSquare.swift in Sources */,
 				440BEBE11D5EE1B9008017E0 /* RequestDefine.swift in Sources */,
 				CCEE8D4E1D64660A0075FD2D /* HJUser.swift in Sources */,
+				445FB1F61D68002500639136 /* HJGifRefreshHeader.swift in Sources */,
 				440E76221D5F486E0025EF41 /* HJTopicController.swift in Sources */,
 				440BEB731D5EAE76008017E0 /* UIBarButtonItem+HJExtension.swift in Sources */,
 				440BEBC21D5ED126008017E0 /* HJLoginBotomView.swift in Sources */,
