@@ -243,13 +243,16 @@ class HJSubscribeController: UITableViewController {
             //有数据不加载
             if newHot == .Hot && hotArray.count == 0 {
                 self.getJokeData(nil)
-            } else {
+            } else if (newHot == .Hot && hotArray.count != 0) {
                 self.jokeArray.removeAll()
                 self.jokeArray.appendContentsOf(hotArray)
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)
+
             }
+            
             if newHot == .New && newArray.count == 0 {
                 self.getJokeData(nil)
-            } else {
+            } else if newHot == .New && newArray.count != 0 {
                 self.jokeArray.removeAll()
                 self.jokeArray.appendContentsOf(newArray)
                 self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.None)

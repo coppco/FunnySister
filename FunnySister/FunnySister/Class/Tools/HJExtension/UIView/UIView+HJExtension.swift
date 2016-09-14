@@ -146,4 +146,14 @@ extension UIView {
             return nil
         }
     }
+    
+    /**只有设置了autoLayout的才可以*/
+    var hj_autoLayoutHeight: CGFloat {
+        get {
+            let widthFenceConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: kHJMainScreenWidth)
+            self.addConstraint(widthFenceConstraint)
+            let size = self.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            return size.height
+        }
+    }
 }

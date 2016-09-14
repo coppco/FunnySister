@@ -91,6 +91,7 @@ class HJTabBarController: UITabBarController {
     
     private func settingController(controller: UIViewController, title: String, image: String, selectImage: String) {
         controller.tabBarItem.title = title
+        controller.navigationItem.title = title
         controller.tabBarItem.image = UIImage(named: image)
         //选择图片,默认选中的时候会有蓝色  方法1:原始图片(代码)  方法2:在Assets.xcassets中选中图片,  把Render as  选择original(Xcode)
         controller.tabBarItem.selectedImage = UIImage(named: selectImage)?.imageWithRenderingMode(.AlwaysOriginal)

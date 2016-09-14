@@ -13,6 +13,8 @@ class HJFollowController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("123456".md5)
+        
         // Do any additional setup after loading the view.
     }
 

@@ -21,18 +21,34 @@ class HJMineController: UIViewController {
             make.edges.equalTo(self.view)
         }
         tableView.contentInset = UIEdgeInsetsMake(-20, 0, -10, 0)
+        
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        let group = dispatch_group_create()
+        dispatch_group_async(group, queue) { 
+            self.getRecommendData(group)
+            self.getSquareData(group)
+        }
+        //主线程刷新UI等
+        dispatch_group_notify(group, dispatch_get_main_queue()) {
+            if self.recommendData.count > 0 && self.squareData.count > 0 {
+                self.tableView.reloadData()
+            } else {
+                //添加一个重新加载图
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if self.squareData.count == 0 || self.recommendData.count == 0 {
-            self.getRecommendData()
-            self.getSquareData()
-        }
+//        if self.squareData.count == 0 || self.recommendData.count == 0 {
+//            self.getRecommendData()
+//            self.getSquareData()
+//        }
     }
     
     /**获取广场数据*/
-    func getSquareData() {
+    func getSquareData(group: dispatch_group_t) {
+        dispatch_group_enter(group)
         httpRequestJSON(.GET, URLString: get_mine_square, success: { (object) -> Void in
             if let array = object["square_list"].array {
                 var temp = [HJSquare]()
@@ -47,12 +63,14 @@ class HJMineController: UIViewController {
                 }
                 self.squareData = temp
             }
+            dispatch_group_leave(group)
             }) { (error) -> Void in
-                
+                dispatch_group_leave(group)
         }
     }
     /**获取推荐数据*/
-    func getRecommendData() {
+    func getRecommendData(group: dispatch_group_t) {
+        dispatch_group_enter(group)
         httpRequestJSON(.GET, URLString: get_mine_recommend, success: { (object) -> Void in
             guard let array = object.array else {
                 return
@@ -70,23 +88,19 @@ class HJMineController: UIViewController {
             self.recommendData = temp.sort({ (temp1, temp2) -> Bool in
                 return temp1.theme_id >= temp2.theme_id
             })
-            
+            dispatch_group_leave(group)
             }) { (error) -> Void in
-                
+                dispatch_group_leave(group)
         }
     }
     
     //MARK: private
     private var squareData: [HJSquare] = [HJSquare]() {
         didSet {
-            print(squareData.count)
-            self.tableView.reloadData()
         }
     }
     private var recommendData: [HJRecommend] = [HJRecommend]() {
         didSet {
-            print(recommendData.count)
-            self.tableView.reloadData()
 //            self.tableView.contentInset = UIEdgeInsetsMake(44, 0, 29, 0)
         }
     }
